@@ -1,18 +1,18 @@
 <template>
-   <div id="login">
-       <h1>Login</h1>
+   <div id="nav-bar">
+       <router-link to="/">首頁</router-link>
+       <router-link to="/login">登入</router-link>
    </div>
 </template>
 
 <script>
    export default {
-       name: 'Login',
-        
+       name: 'Navbar',
    }
 </script>
 
 <style scoped lang="scss">
-   #login{
+   #nav-bar{
        width: 100%;
        height: 100%;
    }

@@ -25,22 +25,20 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-app.get("/test", (req, res) => {
+app.get("/getAll", (req, res) => {
     MongoClient.connect(uri, function (err, client) {
         client.db('Cart').collection('customer').find().toArray((err, data) => {
             res.send(data)
         })
-      // perform actions on the collection object
       client.close();
     });
 });
 
-app.post("/send", (req, res) => {
+app.post("/createUser", (req, res) => {
     MongoClient.connect(uri, function (err, client) {
         if (err) { res.send('err') }
         else {
             client.db('Cart').collection('customer').insertOne({name:req.body.name})
-            // perform actions on the collection object
             client.close();
             res.send('success')
         }
