@@ -13,7 +13,18 @@
 
 <style scoped lang="scss">
    #nav-bar{
-       width: 100%;
-       height: 100%;
+       background: #2c3e50;
+       display: flex;
+       justify-content: center;
+
+       a {
+        font-weight: bold;
+        color: white;
+        padding: 10px;
+
+        &.router-link-exact-active {
+            color: #42b983;
+        }
+    }
    }
 </style>

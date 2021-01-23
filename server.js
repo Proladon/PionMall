@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require('cors');
 const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require('body-parser');
+const { throwError } = require("rxjs");
 
 const app = express();
 app.use(cors())
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.get("/getAll", (req, res) => {
     MongoClient.connect(uri, function (err, client) {
+        if (err) throw err
         client.db('Cart').collection('customer').find().toArray((err, data) => {
             res.send(data)
         })
@@ -38,6 +40,9 @@ app.post("/createUser", (req, res) => {
     MongoClient.connect(uri, function (err, client) {
         if (err) { res.send('err') }
         else {
+            // todo: check existing
+
+            // create data
             client.db('Cart').collection('customer').insertOne({name:req.body.name})
             client.close();
             res.send('success')
