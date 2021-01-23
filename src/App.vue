@@ -24,7 +24,7 @@ export default {
             apidata: "",
             datatext: "",
             pass: "",
-            apiUrl: "https://c1d3683eb2e1.ngrok.io/",
+            apiUrl: "https://1a501be830dc.ngrok.io/",
         };
     },
     methods: {
@@ -67,7 +67,7 @@ html,body,#app {
     -moz-osx-font-smoothing: grayscale;
 
     text-align: center;
-    color: #2c3e50;
+    color: $prime-dark;
     background: rgb(189, 228, 243);
 }
 

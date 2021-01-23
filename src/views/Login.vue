@@ -1,13 +1,13 @@
 <template>
    <div id="login">
-           <form class="login-form" action="" method="post">
+           <form class="login-form" action="https://1a501be830dc.ngrok.io/" method="post">
                <h1>Login</h1>
-               <input type="text" name="userName" id="" placeholder="User Name">
+               <input type="text" autocomplete="off" name="userName" id="" placeholder="User Name">
                <input type="password" name="password" id="" placeholder="Password">
 
                 <div class="btn-wrapper">
                     <button type="submit">Sign up</button>
-                    <button type="submit">Login</button>
+                    <button>Sign up</button>
                 </div>
            </form>
    </div>
