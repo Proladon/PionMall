@@ -6,11 +6,11 @@
                <input type="password" v-model="password" name="password" id="password" placeholder="Password">
 
                 <div class="btn-wrapper">
-                    <button type="submit">Sign up</button>
                 </div>
 
            </div>
-            <button @click="login">Sign up</button>
+            <button @click="signUp">Sign up</button>
+            <button @click="signIn">Sign in</button>
    </div>
 </template>
 
@@ -26,7 +26,7 @@ import axios from 'axios'
        },
         methods:{
             
-            login: function(){
+            signIn: function(){
                 if(this.username.trim() === '' || this.password.trim === ''){
                     alert("No Epmty") 
                     return
@@ -48,14 +48,24 @@ import axios from 'axios'
                             // todo: logged in 
                         }
                     })
+            },
+
+            signUp: function(){
+            // todo: sign up new user
+            const data = {
+                    username: this.username,
+                    password: this.password
             }
+
+            axios.post('https://e7b2532e4e4c.ngrok.io/user/signup',data)
+                .then(res=>{
+                    console.log(res.data)
+                })
+        }
         },
 
 
-        signup: function(){
-            // todo: sign up new user
-            return
-        }
+        
    }
 </script>
 

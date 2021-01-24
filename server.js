@@ -64,14 +64,14 @@ app.post("/createUser", (req, res) => {
 
 //:: user signin
 app.post("/user/signin", (req, response) => {
-    const preset = {
-        name: req.body.username,
+    const data = {
+        username: req.body.username,
         password: req.body.password
     }
 
     // check user is existing
     MongoClient.connect(uri, (err, db) => {
-        dbCollention(db, 'customer').findOne(preset, (err, result) => {
+        dbCollention(db, 'customer').findOne(data, (err, result) => {
             if (!result) {
                 response.send("not found")
             } 
@@ -84,7 +84,18 @@ app.post("/user/signin", (req, response) => {
 
 
 // todo: signup new user
-// app.post("/user/signup")
+app.post("/user/signup", (req, response)=> {
+    MongoClient.connect(uri, (err, db) => {
+        const data = {
+            username: req.body.username,
+            password: req.body.password
+        }
+        dbCollention(db, 'customer').insertOne(data, (err, result) => {
+            console.log(result)
+            response.send(200)
+        })
+    })
+})
  
 
 app.listen(port, () => {
