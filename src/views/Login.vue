@@ -1,22 +1,61 @@
 <template>
    <div id="login">
-           <form class="login-form" action="https://1a501be830dc.ngrok.io/" method="post">
+           <div class="login-form" action="" method="post">
                <h1>Login</h1>
-               <input type="text" autocomplete="off" name="userName" id="" placeholder="User Name">
-               <input type="password" name="password" id="" placeholder="Password">
+               <input type="text" v-model="username" autocomplete="off" name="userName" id="username" placeholder="User Name">
+               <input type="password" v-model="password" name="password" id="password" placeholder="Password">
 
                 <div class="btn-wrapper">
                     <button type="submit">Sign up</button>
-                    <button>Sign up</button>
                 </div>
-           </form>
+
+           </div>
+            <button @click="login">Sign up</button>
    </div>
 </template>
 
 <script>
+import axios from 'axios'
    export default {
        name: 'Login',
-        
+       data(){
+           return{
+               username:'',
+               password:''
+           }
+       },
+        methods:{
+            
+            login: function(){
+                if(this.username.trim() === '' || this.password.trim === ''){
+                    alert("No Epmty") 
+                    return
+                }
+
+                const data = {
+                    username: this.username,
+                    password: this.password
+                }
+
+                axios.post('https://e7b2532e4e4c.ngrok.io/user/signin',data)
+                    .then(res=>{
+                        if(res.data === 'not found'){
+                            alert('not found')
+                            // todo: logging in failed =? alert || sign up
+
+                        }else if(res.data === 'success'){
+                            alert('success')
+                            // todo: logged in 
+                        }
+                    })
+            }
+        },
+
+
+        signup: function(){
+            // todo: sign up new user
+            return
+        }
    }
 </script>
 

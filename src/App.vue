@@ -3,13 +3,13 @@
         <Navbar />
         <router-view />
 
-        <!-- <input type="text" name="" id="" v-model="datatext" />
+        <input type="text" name="" id="" v-model="datatext" />
         <button @click="senddata">Create</button>
         <button @click="getdata">Refresh</button>
         <p>{{ pass }}</p>
         <hr />
         <h2>CLOUD DB DATA:</h2>
-        <p v-for="data in apidata" :key="data.name">{{ data.name }}</p> -->
+        <p v-for="data in apidata" :key="data.name">{{ data.name }}</p>
     </div>
 </template>
 <script>
@@ -24,7 +24,7 @@ export default {
             apidata: "",
             datatext: "",
             pass: "",
-            apiUrl: "https://1a501be830dc.ngrok.io/",
+            apiUrl: "https://e7b2532e4e4c.ngrok.io/",
         };
     },
     methods: {
