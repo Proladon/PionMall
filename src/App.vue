@@ -3,13 +3,13 @@
         <Navbar />
         <router-view />
 
-        <input type="text" name="" id="" v-model="datatext" />
+        <!-- <input type="text" name="" id="" v-model="datatext" />
         <button @click="senddata">Create</button>
         <button @click="getdata">Refresh</button>
         <p>{{ pass }}</p>
         <hr />
         <h2>CLOUD DB DATA:</h2>
-        <p v-for="data in apidata" :key="data.username">{{ data.username}}, {{data.password }}</p>
+        <p v-for="data in apidata" :key="data.username">{{ data.username}}, {{data.password }}</p> -->
     </div>
 </template>
 <script>
@@ -24,7 +24,7 @@ export default {
             apidata: "",
             datatext: "",
             pass: "",
-            apiUrl: "https://c8c486142b3b.ngrok.io/",
+            apiUrl: "https://f953dfd37510.ngrok.io/",
         };
     },
     methods: {
@@ -48,6 +48,9 @@ export default {
             });
         },
     },
+    Mounted:{
+
+    }
 };
 </script>
 <style lang="scss">
@@ -59,6 +62,12 @@ html,body,#app {
     margin: 0;
     padding: 0;
     
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    
 }
 
 #app {
@@ -68,7 +77,9 @@ html,body,#app {
 
     text-align: center;
     color: $prime-dark;
-    background: rgb(189, 228, 243);
+    background: rgb(33, 40, 53),;
+    // background-image: url('./assets/img/bg.png');
+    // background-size: cover;
 }
 
 

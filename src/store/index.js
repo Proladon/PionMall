@@ -4,9 +4,14 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
+    state: {
+        user: '',
+        logged: false,
   },
-  mutations: {
+    mutations: {
+        UPDATE_LOGGED_STATE(state, data) {
+            state.logged = data
+      }
   },
   actions: {
   },

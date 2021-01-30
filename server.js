@@ -81,13 +81,14 @@ app.post("/user/signin", (req, response) => {
         dbCollention(db, 'customer').findOne(user, (err, result) => {
             if (result) {
                 if (err) console.log(err)
+                // Sign Token
                 jwt.sign({ _id: user.username }, SECRET, { expiresIn: '1h' }, (err,token) => {
                     if (err) throw err
                     response.send(token)
                 })
             } 
             else {
-                response.send("not found")
+                response.send("Not found user")
             }
         })
     })
@@ -100,14 +101,16 @@ app.post("/user/signup", (req, response) => {
         username: req.body.username,
         password: req.body.password
     }
-    
-
 
     MongoClient.connect(uri, (err, db) => {
         if(err)console.log(err)
         dbCollention(db, 'customer').insertOne(user, (err, result) => {
-            console.log(result)
-            response.send(200)
+            if (err) {
+                console.log(err)
+            }
+            else {
+                response.send('success')
+            }
         })
     })
     
