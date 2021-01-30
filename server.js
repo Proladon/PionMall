@@ -1,10 +1,12 @@
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
+const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const password = "rex841018";
 const dbname = "Cart";
+const SECRET = "pionmall_secret"
 
 // Driver ^3.6
 // const uri = `mongodb+srv://Proladon:${password}@cart.rqkkm.mongodb.net/${dbname}?retryWrites=true&w=majority`;
@@ -38,6 +40,7 @@ app.get("/getAll", (req, res) => {
     MongoClient.connect(uri, (err, db) =>{
         if (err) throw err
         dbCollention(db, 'customer').find().toArray((err, data) => {
+            console.log(data)
             res.send(data)
         })
       db.close();
@@ -64,19 +67,27 @@ app.post("/createUser", (req, res) => {
 
 //:: user signin
 app.post("/user/signin", (req, response) => {
-    const data = {
+    const user = {
         username: req.body.username,
         password: req.body.password
     }
 
+    
+
     // check user is existing
     MongoClient.connect(uri, (err, db) => {
-        dbCollention(db, 'customer').findOne(data, (err, result) => {
-            if (!result) {
-                response.send("not found")
+        if (err) console.log(err)
+        
+        dbCollention(db, 'customer').findOne(user, (err, result) => {
+            if (result) {
+                if (err) console.log(err)
+                jwt.sign({ _id: user.username }, SECRET, { expiresIn: '1h' }, (err,token) => {
+                    if (err) throw err
+                    response.send(token)
+                })
             } 
             else {
-                response.send('success')
+                response.send("not found")
             }
         })
     })
@@ -84,17 +95,22 @@ app.post("/user/signin", (req, response) => {
 
 
 // todo: signup new user
-app.post("/user/signup", (req, response)=> {
+app.post("/user/signup", (req, response) => {
+    const user = {
+        username: req.body.username,
+        password: req.body.password
+    }
+    
+
+
     MongoClient.connect(uri, (err, db) => {
-        const data = {
-            username: req.body.username,
-            password: req.body.password
-        }
-        dbCollention(db, 'customer').insertOne(data, (err, result) => {
+        if(err)console.log(err)
+        dbCollention(db, 'customer').insertOne(user, (err, result) => {
             console.log(result)
             response.send(200)
         })
     })
+    
 })
  
 

@@ -37,14 +37,14 @@ import axios from 'axios'
                     password: this.password
                 }
 
-                axios.post('https://e7b2532e4e4c.ngrok.io/user/signin',data)
+                axios.post('https://c8c486142b3b.ngrok.io/user/signin',data)
                     .then(res=>{
                         if(res.data === 'not found'){
                             alert('not found')
                             // todo: logging in failed =? alert || sign up
 
-                        }else if(res.data === 'success'){
-                            alert('success')
+                        }else{
+                            alert(res.data)
                             // todo: logged in 
                         }
                     })
@@ -57,7 +57,7 @@ import axios from 'axios'
                     password: this.password
             }
 
-            axios.post('https://e7b2532e4e4c.ngrok.io/user/signup',data)
+            axios.post('https://c8c486142b3b.ngrok.io/user/signup',data)
                 .then(res=>{
                     console.log(res.data)
                 })

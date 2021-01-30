@@ -9,7 +9,7 @@
         <p>{{ pass }}</p>
         <hr />
         <h2>CLOUD DB DATA:</h2>
-        <p v-for="data in apidata" :key="data.name">{{ data.name }}</p>
+        <p v-for="data in apidata" :key="data.username">{{ data.username}}, {{data.password }}</p>
     </div>
 </template>
 <script>
@@ -24,7 +24,7 @@ export default {
             apidata: "",
             datatext: "",
             pass: "",
-            apiUrl: "https://e7b2532e4e4c.ngrok.io/",
+            apiUrl: "https://c8c486142b3b.ngrok.io/",
         };
     },
     methods: {
