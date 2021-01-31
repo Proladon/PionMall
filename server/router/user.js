@@ -13,7 +13,7 @@ const dbCollention = (client, collection) => client.db(dbname).collection(collec
 router.post("/signin", (req, response) => {
     const user = {
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
     }
 
     // check user is existing
@@ -24,7 +24,7 @@ router.post("/signin", (req, response) => {
             if (result) {
                 if (err) console.log(err)
                 // Sign Token
-                jwt.sign({ _id: user.username }, SECRET, { expiresIn: '1h' }, (err,token) => {
+                jwt.sign({ _id: user.username }, SECRET, { expiresIn: '10000' }, (err,token) => {
                     if (err) throw err
                     response.send({user:user.username, token:token})
                 })
@@ -41,7 +41,7 @@ router.post("/signin", (req, response) => {
 router.post("/signup", (req, response) => {
     const user = {
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
     }
 
     MongoClient.connect(uri, (err, db) => {

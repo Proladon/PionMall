@@ -34,7 +34,8 @@ import axios from 'axios'
 
                 const user = {
                     username: this.username,
-                    password: this.password
+                    password: this.password,
+                    token: localStorage.getItem('Token')
                 }
 
                 axios.post('https://f953dfd37510.ngrok.io/user/signin',user)
@@ -46,7 +47,7 @@ import axios from 'axios'
                             // todo: logging in failed =? alert || sign up
 
                         }else{
-                            console.log(res.data.user)
+                            localStorage.setItem('Token', res.data.token)
                             this.$router.push({name:'User'})
                             this.$store.commit('UPDATE_USER', res.data.user)
                             this.$store.commit('UPDATE_LOGGED_STATE', true)
