@@ -1,11 +1,11 @@
 <template>
     <div id="nav-bar">
         <router-link to="/">首頁</router-link>
+        <p>{{user}}</p>
+        
         <router-link v-if="logged" to="/user">帳戶</router-link>
         <router-link v-if="!logged" to="/login">登入</router-link>
-        <router-link v-if="logged" @click.native="signout" to=""
-            >登出</router-link
-        >
+        <a id="signout-btn" v-if="logged" @click="signout">登出</a>
     </div>
 </template>
 
@@ -46,5 +46,11 @@ export default {
             color: #42b983;
         }
     }
+
+    #signout-btn{
+    color: rgb(255, 105, 158);
 }
+}
+
+
 </style>

@@ -9,6 +9,9 @@ export default new Vuex.Store({
         logged: false,
   },
     mutations: {
+        UPDATE_USER(state, data) {
+            state.user = data
+        },
         UPDATE_LOGGED_STATE(state, data) {
             state.logged = data
       }

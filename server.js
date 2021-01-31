@@ -84,7 +84,7 @@ app.post("/user/signin", (req, response) => {
                 // Sign Token
                 jwt.sign({ _id: user.username }, SECRET, { expiresIn: '1h' }, (err,token) => {
                     if (err) throw err
-                    response.send(token)
+                    response.send({user:user.username, token:token})
                 })
             } 
             else {

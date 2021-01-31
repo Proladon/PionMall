@@ -1,6 +1,7 @@
 <template>
    <div id="user-view">
        <h1>User Page</h1>
+       <h2>{{user}}</h2>
    </div>
 </template>
 
@@ -8,7 +9,8 @@
    export default {
        name: 'User',
        computed:{
-           logged(){return this.$store.state.logged}
+           logged(){return this.$store.state.logged},
+           user() {return this.$store.state.user},
        },
        mounted(){
            if(!this.logged){

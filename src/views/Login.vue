@@ -2,7 +2,6 @@
    <div id="login">
            <div class="login-form">
                <p>Login</p>
-                {{logged}}
                <div class="input-wrapper">
                 <input type="text" v-model="username" autocomplete="off" name="userName" id="username" placeholder="User Name">
                 <input type="password" v-model="password" name="password" id="password" placeholder="Password">
@@ -47,9 +46,9 @@ import axios from 'axios'
                             // todo: logging in failed =? alert || sign up
 
                         }else{
-                            // alert(res.data)
+                            console.log(res.data.user)
                             this.$router.push({name:'User'})
-                            // todo: logged in 
+                            this.$store.commit('UPDATE_USER', res.data.user)
                             this.$store.commit('UPDATE_LOGGED_STATE', true)
                             
                         }
@@ -96,6 +95,7 @@ import axios from 'axios'
 
     .login-form {
         position: relative;
+        backdrop-filter: blur(5px);
         width: 20rem;
         height: 50%;
         padding: 30px;
