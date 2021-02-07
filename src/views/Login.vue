@@ -8,7 +8,7 @@
                </div>
 
                 <button class="signin-btn" @click="signIn">Sign in</button>
-
+                
            </div>
             
    </div>
@@ -24,6 +24,7 @@ import axios from 'axios'
                password:''
            }
        },
+
         methods:{
             
             signIn: function(){
@@ -38,7 +39,7 @@ import axios from 'axios'
                     token: localStorage.getItem('Token')
                 }
 
-                axios.post('https://f953dfd37510.ngrok.io/user/signin',user)
+                axios.post(this.apiUrl + '/user/signin',user)
                     .then(res=>{
                         if(res.data === 'Not found user'){
                             alert('Not found user')
@@ -63,7 +64,7 @@ import axios from 'axios'
                     password: this.password
             }
 
-            axios.post('https://c8c486142b3b.ngrok.io/user/signup',data)
+            axios.post(this.apiUrl + '/signup',data)
                 .then(res=>{
                     console.log(res.data)
                 })
@@ -71,7 +72,8 @@ import axios from 'axios'
         },
 
         computed:{
-            logged(){return this.$store.state.logged}
+            logged(){return this.$store.state.logged},
+            apiUrl() {return this.$store.state.apiUrl},
         }
 
 

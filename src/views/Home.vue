@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-  </div>
+    <div class="home"></div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  name: 'Home',
-  components: {
-  },
-  mounted(){
-      axios.post('https://f953dfd37510.ngrok.io/check', {
-          token: localStorage.getItem('Token')
-      })
-  }
-}
+    name: "Home",
+    components: {},
+    computed: {
+        apiUrl() {
+            return this.$store.state.apiUrl;
+        },
+    },
+    mounted() {
+        axios.post(this.apiUrl + "/check", {
+            token: localStorage.getItem("Token"),
+        });
+    },
+};
 </script>

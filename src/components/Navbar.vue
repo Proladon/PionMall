@@ -1,11 +1,19 @@
 <template>
     <div id="nav-bar">
         <router-link to="/">首頁</router-link>
-        <p>{{user}}</p>
-        
+        <p>{{ user }}</p>
+
         <router-link v-if="logged" to="/user">帳戶</router-link>
         <router-link v-if="!logged" to="/login">登入</router-link>
         <a id="signout-btn" v-if="logged" @click="signout">登出</a>
+
+        <div id="site-settings" @click="openSiteSettings">⚙</div>
+
+        <modal name="site-settings" class="test" width="300" height="100">
+            <p>API URL</p>
+            <input type="url" id="api_url">
+            <div class="confirm-btn" @click="changeApiUrl">Confirm</div>
+        </modal>
     </div>
 </template>
 
@@ -27,12 +35,23 @@ export default {
 
             // todo: clear localstorage token
         },
+
+        openSiteSettings(){
+            this.$modal.show("site-settings");
+        },
+
+        changeApiUrl(){
+            const url = document.getElementById('api_url').value
+            this.$store.commit('UPDATE_API', url)
+            this.$modal.hide('site-settings')
+        }
     },
 };
 </script>
 
 <style scoped lang="scss">
 #nav-bar {
+    position: relative;
     background: #2c3e50;
     display: flex;
     justify-content: center;
@@ -47,10 +66,22 @@ export default {
         }
     }
 
-    #signout-btn{
-    color: rgb(255, 105, 158);
-}
+    #signout-btn {
+        color: rgb(255, 105, 158);
+    }
 }
 
+#site-settings {
+    background-color: cadetblue;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.confirm-btn{
+    cursor: pointer;
+    // border: solid 1px darkslategrey;
+}
 
 </style>

@@ -8,8 +8,12 @@ export default new Vuex.Store({
     state: {
         user: "",
         logged: false,
+        apiUrl: ""
     },
     mutations: {
+        UPDATE_API(state, url) {
+            state.apiUrl = url;
+        },
         UPDATE_USER(state, data) {
             state.user = data;
         },
