@@ -7,7 +7,7 @@
             </div>
             
         
-            <div class="product-category">
+            <div class="product-category" @click="test($event)">
                 <div class="category-item" 
                     v-for="cate in category" 
                     :key="cate.name"
@@ -34,22 +34,29 @@ export default {
                     bg: "https://i.imgur.com/HGK7DBH.jpg"
                 },
                 {
-                    name: "Bath Room",
+                    name: "BathRoom",
                     bg: "https://i.imgur.com/O7yoddu.gif"
                 },
                 {
                     name: "Lobby",
                     bg: "https://i.imgur.com/36M6f7y.gif"
                 },
-                
             ]
-
         }
     },
     computed: {
         apiUrl() {
             return this.$store.state.apiUrl;
         },
+    },
+    methods:{
+        test(e){
+            if(e.target.children.length > 0){
+                this.$router.push('products/' + e.target.children[0].outerText)
+            }else{
+                this.$router.push('products/' + e.target.outerText)
+            }
+        }
     },
     mounted() {
         axios.post(this.apiUrl + "/check", {

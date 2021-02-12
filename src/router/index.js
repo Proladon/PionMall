@@ -26,6 +26,11 @@ const routes = [
         name: "User",
         component: () => import("../views/User.vue"),
     },
+    {
+        path: "/products/:category",
+        name: "Products",
+        component: () => import("../views/Products.vue"),
+    },
 ];
 
 const router = new VueRouter({

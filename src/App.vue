@@ -16,7 +16,6 @@ export default {
             apidata: "",
             datatext: "",
             pass: "",
-            // apiUrl: "https://f953dfd37510.ngrok.io/",
         }
     },
     computed:{
