@@ -2,12 +2,12 @@
     <div class="home">
         <div class="head-banner">
             <div class="highlight" :style="`background-image: url(${highlight})`">
-                <h1>Morden Kitchen</h1>
+                <h1>Modern Kitchen</h1>
 
             </div>
             
         
-            <div class="product-category" @click="test($event)">
+            <div class="product-category" @click="cate($event)">
                 <div class="category-item" 
                     v-for="cate in category" 
                     :key="cate.name"
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 export default {
     name: "Home",
     components: {},
@@ -41,6 +41,10 @@ export default {
                     name: "Lobby",
                     bg: "https://i.imgur.com/36M6f7y.gif"
                 },
+                {
+                    name: "Kitchen",
+                    bg: "https://i.pinimg.com/564x/a8/f3/ea/a8f3ea3626c781026d5e599405a706be.jpg"
+                },
             ]
         }
     },
@@ -50,7 +54,7 @@ export default {
         },
     },
     methods:{
-        test(e){
+        cate(e){
             if(e.target.children.length > 0){
                 this.$router.push('products/' + e.target.children[0].outerText)
             }else{
@@ -59,9 +63,9 @@ export default {
         }
     },
     mounted() {
-        axios.post(this.apiUrl + "/check", {
-            token: localStorage.getItem("Token"),
-        });
+        // axios.post(this.apiUrl + "/check", {
+        //     token: localStorage.getItem("Token"),
+        // });
     },
 };
 </script>
@@ -71,8 +75,6 @@ export default {
     height: 500px;
     display: flex;
     gap: 5px;
-    // justify-content: space-between;
-    
 }
 
 .highlight{
@@ -88,12 +90,13 @@ export default {
     flex-direction: column;
     width: 30%;
     height: 100%;
-    // color: rgb(53, 53, 53);
     color: white;
     gap: 5px;
+
+    
     
     .category-item{
-        // border: solid 1px greenyellow;
+        cursor: pointer;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -102,10 +105,14 @@ export default {
         background-repeat: no-repeat;
         background-size: cover;
         filter: brightness(0.8);
+
+        &:hover{
+            filter: brightness(1);
+        }
     }
 
     .category-name{
-        font-size: 40px;
+        font-size: 2vw;
         text-shadow: black 1px 1px 3px;
     }
 }

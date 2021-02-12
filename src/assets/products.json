@@ -1,0 +1,79 @@
+{
+    "Lobby":{
+        "Lobby0":{
+            "name":"Lobby",
+            "id": 0,
+            "img": "https://i.pinimg.com/564x/34/e7/3f/34e73f9e04f7cdafa61a0c641a0a9551.jpg"
+        },
+        "Lobby1":{
+            "name":"Lobby",
+            "id": 1,
+            "img": "https://i.pinimg.com/564x/29/9a/8f/299a8fb2117caf76c2451eb0ad48db8a.jpg"
+        },
+        "Lobby2":{
+            "name":"Lobby",
+            "id": 2,
+            "img": "https://i.pinimg.com/564x/8e/17/c6/8e17c6109ce341d7c705833658bbd165.jpg"
+        },
+        "Lobby3":{
+            "name":"Lobby",
+            "id": 3,
+            "img": "https://i.pinimg.com/564x/8c/24/ed/8c24eda9a4dfcb247fa343d750f661c3.jpg"
+        }
+},
+
+    
+    "BathRoom":[
+        {
+            "name":"BathRoom",
+            "id": 0,
+            "img": "https://i.pinimg.com/564x/32/08/65/32086571e7ad180cb8a8a23e3cbccea7.jpg"
+        },
+        {
+            "name":"BathRoom",
+            "id": 1,
+            "img": "https://i.pinimg.com/564x/9e/0d/77/9e0d77fdec114d8334742326264dfd9c.jpg"
+        }
+    ],
+
+
+    "Room":[
+        {
+            "name":"BathRoom",
+            "id": 0,
+            "img": "https://i.pinimg.com/564x/d4/7c/eb/d47cebb876fd74ad61837fd8442ff07f.jpg"
+        },
+        {
+            "name":"BathRoom",
+            "id": 1,
+            "img": "https://i.pinimg.com/564x/c3/83/b9/c383b971d382bea78c4813270dbee389.jpg"
+        },
+        {
+            "name":"BathRoom",
+            "id": 2,
+            "img": "https://i.pinimg.com/564x/20/4d/47/204d473f09eec2e75994b1dbdf72eb4f.jpg"
+        },
+        {
+            "name":"BathRoom",
+            "id": 3,
+            "img": "https://i.pinimg.com/564x/2c/2d/7c/2c2d7ce517301b6eedac4bdc03e88f7f.jpg"
+        },
+        {
+            "name":"BathRoom",
+            "id": 4,
+            "img": "https://i.pinimg.com/564x/c3/83/b9/c383b971d382bea78c4813270dbee389.jpg"
+        }
+    ],
+    "Kitchen":[
+        {
+            "name":"Kitchen",
+            "id": 5,
+            "img": "https://i.pinimg.com/564x/b3/2e/5b/b32e5b6a35bbbd9dd0b4100e2a9c2a91.jpg"
+        },
+        {
+            "name":"Kitchen",
+            "id": 6,
+            "img": "https://i.pinimg.com/564x/c1/d6/8a/c1d68a99997cf634864f4bc8f480016e.jpg"
+        }
+    ]
+}

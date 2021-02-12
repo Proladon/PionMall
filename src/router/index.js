@@ -15,8 +15,7 @@ const routes = [
         name: "About",
         component: () => import("../views/About.vue"),
     },
-    {
-        
+    {   
         path: "/login",
         name: "Login",
         component: () => import("../views/Login.vue"),
@@ -30,6 +29,12 @@ const routes = [
         path: "/products/:category",
         name: "Products",
         component: () => import("../views/Products.vue"),
+    },
+    {
+        path: "/products/:category/:id",
+        name: "Detail",
+        props: true,
+        component: () => import("../views/Detail.vue"),
     },
 ];
 
