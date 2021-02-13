@@ -1,9 +1,8 @@
 <template>
   <div class="quantity-Input">
-      <div class="btn sub-btn">-</div>
+      <div class="btn sub-btn" @click="subQuantity">-</div>
       <input type="number" id="quantity-input" :ref="quantity_input" v-model="total">
-      <div class="btn add-btn">+</div>
-
+      <div class="btn add-btn" @click="addQuantity">+</div>
       <span>{{price*total}}</span>
   </div>
 </template>
@@ -14,7 +13,17 @@ export default {
     props:['price'],
     data(){
         return{
-            total:0
+            total:1
+        }
+    },
+    methods:{
+        subQuantity(){
+            if(this.total === 1) return
+            this.total -= 1
+        },
+        
+        addQuantity(){
+            this.total += 1
         }
     }
 }
@@ -34,6 +43,8 @@ export default {
     text-align: center;
     color: grey;
     background: rgb(201, 201, 201);
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 input{
