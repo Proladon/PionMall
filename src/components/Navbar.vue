@@ -3,8 +3,9 @@
         <router-link to="/">首頁</router-link>
         <p>{{ user }}</p>
 
-        <router-link v-if="logged" to="/user">帳戶</router-link>
-        <router-link v-if="!logged" to="/login">登入</router-link>
+        <router-link to="/Cart">購物車</router-link>
+        <router-link v-if="logged" to="/User">帳戶</router-link>
+        <router-link v-if="!logged" to="/Login">登入</router-link>
         <a id="signout-btn" v-if="logged" @click="signout">登出</a>
 
         <div id="site-settings" @click="openSiteSettings">⚙</div>

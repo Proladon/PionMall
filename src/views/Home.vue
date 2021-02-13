@@ -56,9 +56,9 @@ export default {
     methods:{
         cate(e){
             if(e.target.children.length > 0){
-                this.$router.push('products/' + e.target.children[0].outerText)
+                this.$router.push('Products/' + e.target.children[0].outerText)
             }else{
-                this.$router.push('products/' + e.target.outerText)
+                this.$router.push('Products/' + e.target.outerText)
             }
         }
     },

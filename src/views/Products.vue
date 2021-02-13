@@ -25,7 +25,7 @@ export default {
     methods:{
         selectProduct(id){
             const cate = this.$route.params.category
-            this.$route.push('products/' + cate + id)
+            this.$route.push('Products/' + cate + id)
         },
         test(e){
             const cate = this.$route.params.category
