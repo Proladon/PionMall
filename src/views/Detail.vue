@@ -1,8 +1,17 @@
 <template>
   <div class="detail">
-    <h1>{{category}}</h1>
-    <h1>{{id}}</h1>
-    <img :src="products[category][id].img" alt="">
+    <img :src="products.img" alt="">
+
+    <div class="item-info">
+      <h1>{{id}}</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, soluta fugiat repudiandae est aliquam id voluptatibus necessitatibus ea quos laudantium quaerat facilis tempore aperiam dicta vero saepe incidunt. Molestiae, sapiente.</p>
+      
+      <h2>Price: ${{products.price}}</h2>
+      <div class="btn-wrapper">
+        <div class="add-cart-btn">加入購物車</div>
+        <div class="buy-now-btn">立即購買</div>
+      </div>
+    </div>
 
     
   </div>
@@ -15,7 +24,7 @@ export default {
   props:['category', 'id'],
   data(){
     return{
-      products: products
+      products: products[this.category][this.id]
     }
   },
   methods:{
@@ -25,5 +34,48 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/scss/varables.scss";
 
+@mixin btn($color){
+  cursor: pointer;
+  color: $prime-dark;
+  background-color: $color;
+  padding: 10px;
+}
+
+
+.detail{
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  img{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  
+  .item-info{
+    color: lightgrey;
+    margin: 10px;
+    width: 300px;
+    text-align: left;
+  }
+}
+
+
+
+.btn-wrapper{
+  display: flex;
+  gap: 10px;
+
+
+  .add-cart-btn{
+    @include btn($color:lightskyblue)
+  }
+  .buy-now-btn{
+    @include btn($color:lightsalmon)
+  }
+}
 </style>

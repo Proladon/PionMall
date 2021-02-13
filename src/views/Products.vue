@@ -45,7 +45,7 @@ export default {
           this.products = products.BathRoom;
           break;
         case "Kitchen":
-          this.products = products.BathRoom;
+          this.products = products.Kitchen;
           break;
       }
   },
