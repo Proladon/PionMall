@@ -7,6 +7,7 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, soluta fugiat repudiandae est aliquam id voluptatibus necessitatibus ea quos laudantium quaerat facilis tempore aperiam dicta vero saepe incidunt. Molestiae, sapiente.</p>
       
       <h2>Price: ${{products.price}}</h2>
+      <QuantityInput :price="products.price" />
       <div class="btn-wrapper">
         <div class="add-cart-btn">加入購物車</div>
         <div class="buy-now-btn">立即購買</div>
@@ -19,9 +20,11 @@
 
 <script>
 import products from "@/assets/products.json";
+import QuantityInput from '@/components/QuantityInput.vue'
 export default {
   name: "Detail",
   props:['category', 'id'],
+  components:{QuantityInput},
   data(){
     return{
       products: products[this.category][this.id]
