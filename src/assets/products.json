@@ -4,7 +4,7 @@
             "name": "Lobby",
             "id": 0,
             "img": "https://i.pinimg.com/564x/34/e7/3f/34e73f9e04f7cdafa61a0c641a0a9551.jpg",
-            "price":100
+            "price":1000
         },
         "Lobby1": {
             "name": "Lobby",
@@ -62,7 +62,7 @@
             "name": "Room",
             "id": 3,
             "img": "https://i.pinimg.com/564x/2c/2d/7c/2c2d7ce517301b6eedac4bdc03e88f7f.jpg",
-            "price":100
+            "price":500
         },
         "Room4": {
             "name": "Room",

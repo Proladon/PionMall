@@ -8,7 +8,8 @@ export default new Vuex.Store({
     state: {
         user: "",
         logged: false,
-        apiUrl: ""
+        apiUrl: "",
+        cart:[],
     },
     mutations: {
         UPDATE_API(state, url) {
@@ -20,6 +21,10 @@ export default new Vuex.Store({
         UPDATE_LOGGED_STATE(state, data) {
             state.logged = data;
         },
+
+        ADD_CART(state, products){
+            state.cart.push(products)
+        }
     },
     actions: {},
     modules: {},

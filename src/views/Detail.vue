@@ -6,11 +6,11 @@
       <h1>{{id}}</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, soluta fugiat repudiandae est aliquam id voluptatibus necessitatibus ea quos laudantium quaerat facilis tempore aperiam dicta vero saepe incidunt. Molestiae, sapiente.</p>
       
-      <h2>Price: ${{products.price}}</h2>
+      <h2>${{products.price}}</h2>
       <QuantityInput :price="products.price" />
       <div class="btn-wrapper">
-        <div class="add-cart-btn">加入購物車</div>
-        <div class="buy-now-btn">立即購買</div>
+        <div class="add-cart-btn" @click="addCart">加入購物車</div>
+        <div class="buy-now-btn" @click="buyNow">立即購買</div>
       </div>
     </div>
 
@@ -31,7 +31,13 @@ export default {
     }
   },
   methods:{
+    addCart(){
 
+    },
+
+    buyNow(){
+
+    }
   }
 };
 </script>
