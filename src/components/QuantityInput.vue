@@ -1,7 +1,7 @@
 <template>
   <div class="quantity-Input">
       <div class="btn sub-btn" @click="subQuantity">-</div>
-      <input type="number" id="quantity-input" :ref="quantity_input" v-model="total">
+      <input type="number" id="quantity-input" v-model="total">
       <div class="btn add-btn" @click="addQuantity">+</div>
       <span>{{price*total}}</span>
   </div>

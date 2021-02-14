@@ -32,7 +32,7 @@ export default {
   },
   methods:{
     addCart(){
-
+      this.$store.commit('ADD_CART', {category: this.category, id: this.id})
     },
 
     buyNow(){

@@ -24,6 +24,9 @@ export default new Vuex.Store({
 
         ADD_CART(state, products){
             state.cart.push(products)
+        },
+        DELETE_FROM_CART(state, itemIndex){
+            state.cart.splice(itemIndex, 1)
         }
     },
     actions: {},
