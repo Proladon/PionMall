@@ -4,7 +4,7 @@ const router = express.Router()
 const {uri, SECRET} = require('../dbClient')
 const jwt = require('jsonwebtoken')
 
-const dbname = "Cart";
+const dbname = "Cluster0";
 // Get db Collection
 const dbCollention = (client, collection) => client.db(dbname).collection(collection)
 
@@ -20,7 +20,7 @@ router.post("/signin", (req, response) => {
     MongoClient.connect(uri, (err, db) => {
         if (err) console.log(err)
         
-        dbCollention(db, 'customer').findOne(user, (err, result) => {
+        dbCollention(db, 'Customer').findOne(user, (err, result) => {
             if (result) {
                 if (err) console.log(err)
                 // Sign Token
@@ -37,16 +37,17 @@ router.post("/signin", (req, response) => {
 })
 
 
-// todo: signup new user
+
 router.post("/signup", (req, response) => {
     const user = {
         username: req.body.username,
         password: req.body.password,
+        in_cart: []
     }
 
     MongoClient.connect(uri, (err, db) => {
         if(err)console.log(err)
-        dbCollention(db, 'customer').insertOne(user, (err, result) => {
+        dbCollention(db, 'Customer').insertOne(user, (err, result) => {
             if (err) {
                 console.log(err)
             }

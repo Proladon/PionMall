@@ -30,9 +30,27 @@ export default {
       products: products[this.category][this.id]
     }
   },
+  computed:{
+    cart(){
+      return this.$store.state.cart
+    },
+  },
   methods:{
     addCart(){
-      this.$store.commit('ADD_CART', {category: this.category, id: this.id})
+      for(let i of this.cart){
+        if(this.category === i.category){
+          if(this.id === i.id){
+            // todo: 購物車中商品數量+1
+            return
+          }
+        }
+      }
+      const itemData ={
+        category: this.category, 
+        id: this.id
+        
+      }
+      this.$store.commit('ADD_CART', itemData)
     },
 
     buyNow(){
