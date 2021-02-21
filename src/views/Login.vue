@@ -50,11 +50,10 @@ export default {
         token: localStorage.getItem("Token"),
       };
 
-      axios.post(this.apiUrl + "/user/signin", user).then((res) => {
+      axios.get(this.apiUrl + "/user/"+ this.username, user).then((res) => {
         if (res.data === "Not found user") {
           alert("Not found user");
-          this.username = "";
-          this.password = "";
+
           // todo: logging in failed =? alert || sign up
         } else {
           localStorage.setItem("Token", res.data.token);

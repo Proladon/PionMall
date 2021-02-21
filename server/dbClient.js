@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const dbname = "Cluster0";
+const dbname = "PionMall";
 
 // Driver ^3.6
 // const uri = `mongodb+srv://Proladon:${password}@cart.rqkkm.mongodb.net/${dbname}?retryWrites=true&w=majority`;
