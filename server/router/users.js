@@ -1,15 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../model/User')
-const {registerValidation} = require('../validation')
+const {registerValidation, loginValidation} = require('../../validation/validation')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 
 //:: user sign up
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
+    console.log(req.body)
 
     // Validate input data
-    const {error} = await registerValidation(req.body)
+    const {error} = registerValidation(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
     // Check if email already in database
@@ -35,13 +37,21 @@ router.post('/', async (req, res) => {
 })
 
 
+router.post('/signin', async (req, res) => {
+    const { error } = loginValidation(req.body)
+    if (error) return res.status(400).send(error.details[0].message)
+    
+    // Check if email already in database
+    const user = await User.findOne({ email: req.body.email })
+    if (!user) {return res.status(401).send('Email is not found')}
 
+    // Check password
+    const validPass = await bcrypt.compare(req.body.password, user.password)
+    if (!validPass) return res.status(400).send('Invalid password')
 
-router.get('/getall', (req, response) => {
-
-    dbCollention(db, 'Customer').find().toArray((err, data) => {
-        response.send(data)
-    })
+    // assign  jet token
+    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
+    res.header('auth-token', token).send(token)
 })
 
 
