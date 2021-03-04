@@ -32,18 +32,18 @@ app.use(express.static("dist"));
 
 
 // todo: check token exp
-const checkTokenExp = (req, res, next) => {
-    const token = req.body.token
-    try {
-        jwt.verify(token, SECRET);
-        next()
-      } catch(err) {
-        console.log("過期")
-        next()
-      }
-}
+// const checkTokenExp = (req, res, next) => {
+//     const token = req.body.token
+//     try {
+//         jwt.verify(token, SECRET);
+//         next()
+//       } catch(err) {
+//         console.log("過期")
+//         next()
+//       }
+// }
 
-app.use(checkTokenExp)
+// app.use(checkTokenExp)
 
 app.post('/check', (req, res) => {
     console.log("check")

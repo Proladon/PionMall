@@ -1,5 +1,7 @@
 <template>
     <div id="nav-bar">
+
+        
         <router-link to="/">首頁</router-link>
         <p>{{ user }}</p>
 

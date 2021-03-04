@@ -31,10 +31,16 @@ const routes = [
         component: () => import("../views/Products.vue"),
     },
     {
-        path: "/Products/:category/:id",
+        path: "/Products/:category/:index",
         name: "Detail",
         props: true,
         component: () => import("../views/Detail.vue"),
+    },
+    {
+        path: "/Payment/",
+        name: "Payment",
+        props: true,
+        component: () => import("../views/Payment.vue"),
     },
 ];
 

@@ -1,13 +1,12 @@
 <template>
   <div class="detail">
     <img :src="products.img" alt="">
-
     <div class="item-info">
-      <h1>{{id}}</h1>
+      <h1>{{products.name}}</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, soluta fugiat repudiandae est aliquam id voluptatibus necessitatibus ea quos laudantium quaerat facilis tempore aperiam dicta vero saepe incidunt. Molestiae, sapiente.</p>
       
       <h2>${{products.price}}</h2>
-      <QuantityInput :price="products.price" />
+      <QuantityInput :price="products.price" @qtyChange="getQty"/>
       <div class="btn-wrapper">
         <div class="add-cart-btn" @click="addCart">加入購物車</div>
         <div class="buy-now-btn" @click="buyNow">立即購買</div>
@@ -21,20 +20,26 @@
 <script>
 import products from "@/assets/products.json";
 import QuantityInput from '@/components/QuantityInput.vue'
+// import axios from 'axios'
 export default {
   name: "Detail",
-  props:['category', 'id'],
+  props:['category', 'index'],
   components:{QuantityInput},
   data(){
     return{
-      products: products[this.category][this.id]
+      products: products[this.category][this.index.split('-')[1]],
+      total: 1
     }
   },
   computed:{
+    apiUrl() {
+      return this.$store.state.apiUrl;
+    },
     cart(){
       return this.$store.state.cart
     },
   },
+
   methods:{
     addCart(){
       for(let i of this.cart){
@@ -53,7 +58,26 @@ export default {
       this.$store.commit('ADD_CART', itemData)
     },
 
+    getQty(qty){
+        this.total = qty
+    },
+
     buyNow(){
+
+        // require user signin
+
+        // redirect to buy page (check jwt valid)
+
+        // jet invalid - request sigin
+
+        this.$router.push({name: 'Payment', params: {product: this.products, total:this.total}})
+
+        // axios.get(this.apiUrl + "/users/verifyToken")
+        //     .then((res) => {
+        //         console.log(res)
+        //     }).catch(() => {
+        //         this.$router.push({name: 'Payment'})
+        //     });
 
     }
   }

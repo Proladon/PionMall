@@ -32,7 +32,7 @@ html,body,#app {
     height: 100%;
     margin: 0;
     padding: 0;
-    
+    background: rgb(33, 40, 53),;
     -ms-overflow-style: none;
 }
 
@@ -48,7 +48,7 @@ body::-webkit-scrollbar {
 
     text-align: center;
     color: $prime-dark;
-    background: rgb(33, 40, 53),;
+    
     // background-image: url('./assets/img/bg.png');
     // background-size: cover;
 }

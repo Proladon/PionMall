@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../model/User')
-const {registerValidation, loginValidation} = require('../../validation/validation')
+const { registerValidation, loginValidation } = require('../../validation/validation')
+const verifyToken = require('../middleware/verifyToken')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -52,6 +53,11 @@ router.post('/signin', async (req, res) => {
     // assign  jet token
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
     res.header('auth-token', token).send(token)
+})
+
+
+router.get('/verifyToken', verifyToken ,(req, res) => {
+    res.send('?')
 })
 
 

@@ -3,10 +3,10 @@
     <h1>{{ $route.params.category }}</h1>
 
     <div class="products-list" @click="test($event)">
-        <div class="product-item" v-for="item in products" :key="item.img" >
+        <div class="product-item" v-for="(item, index) in products" :key="item.img" >
             <!-- <img :src="item.img" alt="" /> -->
-            <div class="product-image" :id="item.name + item.id" :style="`background-image: url(${item.img})`"></div>
-            <h3>{{item.name + item.id}}</h3>
+            <div class="product-image" :id="`item-${index}`" :style="`background-image: url(${item.img})`"></div>
+            <h3>{{item.name}}</h3>
         </div>
     </div>
 
@@ -23,10 +23,10 @@ export default {
     };
   },
     methods:{
-        selectProduct(id){
-            const cate = this.$route.params.category
-            this.$route.push('Products/' + cate + id)
-        },
+        // selectProduct(id){
+        //     const cate = this.$route.params.category
+        //     this.$route.push('Products/' + cate + id)
+        // },
         test(e){
             const cate = this.$route.params.category
             this.$router.push(cate + '/' + e.target.id)
